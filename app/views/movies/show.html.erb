@@ -17,7 +17,21 @@
         </a>
       </div>
     </div>
-
+<hr>
+<%if session[:user_id] == nil%>
+ 
+<%else%>
+    <% matching_records = Bookmark.where({ :user_id => @current_user.id, :movie_id => @the_movie.id }) %>
+   <% bookmark = matching_records.at(0) %>
+    <% if bookmark == nil %>
+    <form action = "/insert_bookmark" method = "post">
+    <input type = "hidden" value = "<%= @the_movie.id %>" name = "query_movie">
+    <button>Bookmark this movie!</button>
+    </form>
+    <%else%>
+    <a href="/delete_bookmark/<%= bookmark.id %>">Un-bookmark</a>
+    <%end%>
+<%end%>
     <dl>
       <dt>
         Director

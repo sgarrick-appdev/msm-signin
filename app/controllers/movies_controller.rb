@@ -10,6 +10,8 @@ class MoviesController < ApplicationController
   end
 
   def show
+    the_id = session[:user_id]
+    @current_user = User.where({:id => the_id}).first
     the_id = params.fetch("path_id")
 
     matching_movies = Movie.where({ :id => the_id })

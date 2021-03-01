@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   # before_action(:force_user_sign_in)
 
   def index
+    # the_id = session[:user_id]
+    # @current_user = User.where({ :id => the_id }).first
     render({:template => "/index.html.erb"})
   end
 
