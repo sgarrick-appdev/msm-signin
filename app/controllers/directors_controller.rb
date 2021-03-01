@@ -1,4 +1,5 @@
 class DirectorsController < ApplicationController
+  
   def index
     matching_directors = Director.all
 

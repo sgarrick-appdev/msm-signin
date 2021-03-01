@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   # Routes for the Bookmark resource:
 
+  #home
+  get("/", {:controller => "application", :action => "index"})
+
+
   # CREATE
   post("/insert_bookmark", { :controller => "bookmarks", :action => "create" })
           

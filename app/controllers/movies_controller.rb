@@ -1,7 +1,9 @@
 class MoviesController < ApplicationController
+ 
   def index
     matching_movies = Movie.all
-
+    matching_directors = Director.all
+    @list_of_directors = matching_directors.order({ :name => :asc })
     @list_of_movies = matching_movies.order({ :created_at => :desc })
 
     render({ :template => "movies/index.html.erb" })
@@ -25,6 +27,7 @@ class MoviesController < ApplicationController
     the_movie.description = params.fetch("query_description")
     the_movie.duration = params.fetch("query_duration")
     the_movie.image = params.fetch("query_image")
+    
 
     if the_movie.valid?
       the_movie.save

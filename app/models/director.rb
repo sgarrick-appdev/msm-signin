@@ -11,4 +11,7 @@
 #  updated_at :datetime         not null
 #
 class Director < ApplicationRecord
+  #associations
+  has_many(:movies, { :class_name => "Movie", :foreign_key => "director_id", :dependent => :destroy })
+  
 end
